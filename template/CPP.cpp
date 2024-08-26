@@ -73,14 +73,14 @@ vi primeFactors(int n) {
     }
     return factors;
 }
-// 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
+// 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
 void solve() {
 
 }
 int32_t main() {
-    //  freopen("whereami.in", "r", stdin);
-    //  freopen("whereami.out", "w", stdout);
+    /*freopen("whereami.in", "r", stdin);*/
+    /*freopen("whereami.out", "w", stdout);*/
     fastio
     int t = 1;
     /*cin>>t;*/
