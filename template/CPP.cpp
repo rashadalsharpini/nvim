@@ -17,7 +17,7 @@ using namespace std;
 #endif
 #define fastio                                                               \
   ios_base::sync_with_stdio(false);                                            \
-  cin.tie(NULL);
+cin.tie(NULL);
 
 #define int long long
 #define double long double
@@ -46,32 +46,32 @@ template <typename T> ostream &operator<<(ostream &output, const vector<T> &data
     output << x << " ";
   return output;
 }
-int MOD = 1e9+7;
+const int MOD = 1e9+7;
 int fast_power(int a, int b) {
-    int res = 1;
-    while (b) {
-        if (b & 1) res *= a % MOD;
-        a *= a % MOD;
-        b >>= 1;
-    }
-    return res;
+  int res = 1;
+  while (b) {
+    if (b & 1) res *= a % MOD;
+    a *= a % MOD;
+    b >>= 1;
+  }
+  return res;
 }
 vi primeFactors(int n) {
-    vi factors;
-    while (n % 2 == 0) {
-        factors.push_back(2);
-        n /= 2;
+  vi factors;
+  while (n % 2 == 0) {
+    factors.push_back(2);
+    n /= 2;
+  }
+  for (int i = 3; i <= sqrt(n); i += 2) {
+    while (n % i == 0) {
+      factors.push_back(i);
+      n /= i;
     }
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
-        }
-    }
-    if (n > 2) {
-        factors.push_back(n);
-    }
-    return factors;
+  }
+  if (n > 2) {
+    factors.push_back(n);
+  }
+  return factors;
 }
 // 48 - 57 -> 0 - 9  65 - 90 -> A-Z 97 - 122 -> a-z
 
@@ -79,12 +79,12 @@ void solve() {
 
 }
 int32_t main() {
-    /*freopen("whereami.in", "r", stdin);*/
-    /*freopen("whereami.out", "w", stdout);*/
-    fastio
+  /*freopen("whereami.in", "r", stdin);*/
+  /*freopen("whereami.out", "w", stdout);*/
+  fastio
     int t = 1;
-    /*cin>>t;*/
-    while (t--)
-        solve();
-    return 0;
+  /*cin>>t;*/
+  while (t--)
+    solve();
+  return 0;
 }
