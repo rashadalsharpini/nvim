@@ -22,6 +22,7 @@ cin.tie(NULL);
 #define int long long
 #define double long double
 #define all(a) (a).begin(), (a).end()
+#define allr(a) (a).rbegin(), (a).rend()
 #define sz(a) (int)(a).size()
 #define pb push_back
 #define mp make_pair
