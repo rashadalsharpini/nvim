@@ -10,4 +10,5 @@ exponent, performing multiplications only when necessary.
 the best time is the left shift the best memory is the fast_power
 
 # to be continued
-# /usr/include/debug.hpp
+where to put debug.hpp
+/usr/include/debug.hpp
