@@ -12,7 +12,7 @@ return {
         ensure_installed = {
           "lua_ls",
           "bashls",
-          "omnisharp",
+          "omnisharp_mono",
           "clangd",
           "cmake",
           "pylsp",
@@ -28,7 +28,7 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       lspconfig.lua_ls.setup({})
       lspconfig.omnisharp.setup({
-        cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp" },
+        cmd = { vim.fn.stdpath("data") .. "/home/rashad/.local/share/nvim/mason/packages/omnisharp-mono/omnisharp" },
         enable_roslyn_analyzers = true,
         organize_imports_on_format = true,
       })
