@@ -28,8 +28,6 @@ cin.tie(NULL);
 #define mp make_pair
 #define f first
 #define s second
-#define yes cout << "YES\n"
-#define no cout << "NO\n"
 #define vi vector<int>
 #define pi pair<int,int>
 #define OO 2e9

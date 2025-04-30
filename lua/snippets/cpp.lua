@@ -2,6 +2,14 @@ local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 
+-- templateCpp
+-- yes
+-- no
+-- primeFactors
+-- isPrime
+-- fastPower
+-- dfs
+-- bfs
 ls.add_snippets("cpp", {
     s("tempcpp", {
         t({
@@ -25,8 +33,6 @@ ls.add_snippets("cpp", {
             "#define mp make_pair",
             "#define f first",
             "#define s second",
-            '#define yes cout << "YES\\n"',
-            '#define no cout << "NO\\n"',
             "#define vi vector<int>",
             "#define pi pair<int,int>",
             "#define OO 2e9",
@@ -83,6 +89,93 @@ ls.add_snippets("cpp", {
             "  while (t--)",
             "    solve();",
             "  return 0;",
+            "}",
+        }),
+    }),
+    s("yes", {
+        t({
+            'cout << "YES" << endl;',
+        }),
+    }),
+    s("no", {
+        t({
+            'cout << "NO" << endl;',
+        }),
+    }),
+    s("primeFactors", {
+        t({
+
+            "vi primeFactors(int n) {",
+            "    vi factors;",
+            "    while (n % 2 == 0) {",
+            "        factors.push_back(2);",
+            "        n /= 2;",
+            "    }",
+            "    for (int i = 3; i <= sqrt(n); i += 2) {",
+            "        while (n % i == 0) {",
+            "            factors.push_back(i);",
+            "            n /= i;",
+            "        }",
+            "    }",
+            "    if (n > 2) {",
+            "        factors.push_back(n);",
+            "    }",
+            "    return factors;",
+            "}",
+        }),
+    }),
+    s("isPrime", {
+        t({
+            "bool isPrime(int n) {",
+            "    if(n < 2) return false;",
+            "    if(n == 2) return true;",
+            "    if(n % 2 == 0) return false;",
+            "    for(int i = 3; i * i <= n; i += 2) {",
+            "        if(n % i == 0) return false;",
+            "    }",
+            "    return true;",
+            "}",
+        }),
+    }),
+    s("fastPower", {
+        t({
+            "int fast_power(int a, int b, int mod) {",
+            "    int res = 1;",
+            "    while (b) {",
+            "        if (b & 1) res = res * a % mod;",
+            "        a = a * a % mod;",
+            "        b >>= 1;",
+            "    }",
+            "    return res;",
+            "}",
+        }),
+    }),
+    s("dfsCode", {
+        t({
+            "function<void(int)> dfs = [&](int p) {",
+            "    vis[p] = 1;",
+            "    for (auto v : adj[p]) {",
+            "        if (!vis[v]) dfs(v);",
+            "    }",
+            "};",
+        }),
+    }),
+    s("bfsCode", {
+        t({
+            "queue<int> q;",
+            "vector<int> d(n + 1, inf), par(n + 1, -1);",
+            "q.push(1);",
+            "d[1] = 0;",
+            "while (!q.empty()) {",
+            "    int u = q.front();",
+            "    q.pop();",
+            "    for (auto v: g[u]) {",
+            "        if (d[u] + 1 < d[v]) {",
+            "            d[v] = d[u] + 1;",
+            "            par[v] = u;",
+            "            q.push(v);",
+            "        }",
+            "    }",
             "}",
         }),
     }),
