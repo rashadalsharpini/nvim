@@ -55,3 +55,6 @@ map('n', 'gD', vim.lsp.buf.declaration, {})
 map('n', 'gd', vim.lsp.buf.definition, {})
 map('n', 'gi', vim.lsp.buf.implementation, {})
 map({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+
+
+map("v", "<leader>cs", ":Silicon<CR>", { desc = "Capture code screenshot", noremap = true, silent = true })
