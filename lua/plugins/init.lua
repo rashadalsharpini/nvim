@@ -69,4 +69,9 @@ return {
         cmd = "Trouble",
         keys = require("config.troubleMaps"),
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
 }
