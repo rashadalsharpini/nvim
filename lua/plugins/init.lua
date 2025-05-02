@@ -74,4 +74,21 @@ return {
         event = "InsertEnter",
         config = true
     },
+    {
+        "michaelrommel/nvim-silicon",
+        lazy = true,
+        cmd = "Silicon",
+        config = function ()
+            local outputdir = "~/Pictures/screenShot/CodeShots/"
+            require("silicon").setup({
+                font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+                output = function ()
+                    local stamp = os.date("%Y-%m-%d_%H-%M-%S")
+                    local name = vim.fn.expand("%:t"):gsub("%.", "_")
+                    return  outputdir .. name .. stamp .. ".png"
+                end,
+                to_clipboard = true,
+            })
+        end
+    },
 }
