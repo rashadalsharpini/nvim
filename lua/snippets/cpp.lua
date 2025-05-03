@@ -10,6 +10,7 @@ local t = ls.text_node
 -- fastPower
 -- dfs
 -- bfs
+-- adjlist
 ls.add_snippets("cpp", {
     s("tempcpp", {
         t({
@@ -136,20 +137,36 @@ ls.add_snippets("cpp", {
     }),
     s("bfsCode", {
         t({
-            "queue<int> q;",
-            "vector<int> d(n + 1, inf), par(n + 1, -1);",
-            "q.push(1);",
-            "d[1] = 0;",
-            "while (!q.empty()) {",
-            "    int u = q.front();",
-            "    q.pop();",
-            "    for (auto v: g[u]) {",
-            "        if (d[u] + 1 < d[v]) {",
-            "            d[v] = d[u] + 1;",
-            "            par[v] = u;",
-            "            q.push(v);",
+            "vi levels(nodes+1, -1);",
+            "vi parent(nodes+1, -1);",
+            "function<void(int)> bfs = [&](int start) {",
+            "    queue<int> q;",
+            "    q.push(start);",
+            "    vis[start] = true;",
+            "    levels[start] = 0;",
+            "    while (!q.empty()) {",
+            "        int u = q.front(); q.pop();",
+            "        for (int v : adj[u]) {",
+            "            if (!vis[v]) {",
+            "                vis[v] = true;",
+            "                q.push(v);",
+            "                levels[v] = levels[u] + 1;",
+            "                parent[v] = u;",
+            "            }",
             "        }",
             "    }",
+            "};",
+        }),
+    }),
+    s("adjlist", {
+        t({
+            "int nodes, edges;cin>>nodes>>edges;",
+            "vector<vi> adj(nodes+1);",
+            "vector<bool> vis(nodes+1, false);",
+            "for (int i = 0; i < edges; i++) {",
+            "    int u, v;cin>>u>>v;",
+            "    adj[u].push_back(v);",
+            "    adj[v].push_back(u);",
             "}",
         }),
     }),
