@@ -82,12 +82,13 @@ return {
             local outputdir = "~/Pictures/screenShot/CodeShots/"
             require("silicon").setup({
                 font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+                to_clipboard = true,
+                background = "#9ca8b3",
                 output = function ()
                     local stamp = os.date("%Y-%m-%d_%H-%M-%S")
                     local name = vim.fn.expand("%:t"):gsub("%.", "_")
                     return  outputdir .. name .. stamp .. ".png"
                 end,
-                to_clipboard = true,
             })
         end
     },
