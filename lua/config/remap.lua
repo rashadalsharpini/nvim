@@ -58,3 +58,7 @@ map({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
 
 
 map("v", "<leader>cs", ":Silicon<CR>", { desc = "Capture code screenshot", noremap = true, silent = true })
+
+
+
+map("n", "<C-c>", "<cmd> %y+ <CR>")
