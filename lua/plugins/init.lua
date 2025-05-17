@@ -17,11 +17,14 @@ return {
             })
         end,
     },
-    { 
-        "catppuccin/nvim", name = "catppuccin", priority = 1000,
+    {
+        "navarasu/onedark.nvim",
+        priority = 1000,
         config = function()
-            require("catppuccin").setup()
-            vim.cmd.colorscheme "catppuccin"
+            require("onedark").setup {
+                style = "cool" -- options: dark, darker, cool, deep, warm, warmer, light
+            }
+            require("onedark").load()
         end
     },
     {

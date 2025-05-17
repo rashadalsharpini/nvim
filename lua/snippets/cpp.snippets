@@ -260,7 +260,7 @@ snippet code_ncr
     }
 
 
-snippet code_dfs
+snippet dfsCode
     function<void(int)> dfs = [&](int p) {
         vis[p] = 1;
         for (auto v : adj[p]) {
@@ -269,7 +269,7 @@ snippet code_dfs
     };
 
 
-snippet code_bfs
+snippet bfsCode
     vi levels(nodes+1, -1);
     vi parent(nodes+1, -1);
     function<void(int)> bfs = [&](int start) {
@@ -300,7 +300,7 @@ snippet adjlist
         adj[v].push_back(u);
     }
 
-snippet code_bfs_grid
+snippet bfsGridCode
   queue<pair<int, int>> q;
   vector<vector<int>> d(m + 1, vector<int>(n + 1, inf));
   vector<vector<bool>> visited(m + 1, vector<bool>(n + 1, false));
