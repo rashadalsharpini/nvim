@@ -22,7 +22,8 @@ return {
         priority = 1000,
         config = function()
             require("onedark").setup {
-                style = "cool" -- options: dark, darker, cool, deep, warm, warmer, light
+                style = "cool", -- options: dark, darker, cool, deep, warm, warmer, light
+                transparent = true
             }
             require("onedark").load()
         end

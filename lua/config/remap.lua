@@ -62,3 +62,11 @@ map("v", "<leader>cs", ":Silicon<CR>", { desc = "Capture code screenshot", norem
 
 
 map("n", "<C-c>", "<cmd> %y+ <CR>")
+
+
+
+-- Easy window navigation with Ctrl + h/j/k/l
+map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true }) -- Left
+map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true }) -- Down
+map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true }) -- Up
+map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true }) -- Right
