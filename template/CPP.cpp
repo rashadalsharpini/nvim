@@ -50,11 +50,11 @@ void solve() {
 
 }
 int32_t main() {
-    /*freopen("whereami.in", "r", stdin);*/
-    /*freopen("whereami.out", "w", stdout);*/
+    // freopen("whereami.in", "r", stdin);
+    // freopen("whereami.out", "w", stdout);
     fastio
     int t = 1;
-    /*cin>>t;*/
+    // cin>>t;
     while (t--)
         solve();
     return 0;
