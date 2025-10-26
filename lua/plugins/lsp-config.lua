@@ -24,20 +24,35 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
+      -- Use the new vim.lsp.config API instead of require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      lspconfig.lua_ls.setup({})
-      lspconfig.omnisharp.setup({
-        cmd = { vim.fn.stdpath("data") .. "/home/rashad/.local/share/nvim/mason/packages/omnisharp-mono/omnisharp" },
-        enable_roslyn_analyzers = true,
-        organize_imports_on_format = true,
-      })
-      lspconfig.clangd.setup({
+      -- Lua Language Server
+      vim.lsp.config.lua_ls = {}
+      vim.lsp.enable('lua_ls')
+      -- OmniSharp
+      vim.lsp.config.omnisharp = {
+        cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp-mono/omnisharp" },
+        root_markers = { '*.sln', '*.csproj', 'omnisharp.json' },
+        filetypes = { 'cs' },
+        capabilities = capabilities,
+        settings = {
+          omnisharp = {
+            enable_roslyn_analyzers = true,
+            organize_imports_on_format = true,
+          }
+        }
+      }
+      vim.lsp.enable('omnisharp')
+      -- Clangd
+      vim.lsp.config.clangd = {
         capabilities = capabilities
-      })
-      lspconfig.pylsp.setup({
+      }
+      vim.lsp.enable('clangd')
+      -- Python LSP
+      vim.lsp.config.pylsp = {
         capabilities = capabilities
-      })
+      }
+      vim.lsp.enable('pylsp')
     end
   },
 }
