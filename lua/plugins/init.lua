@@ -17,16 +17,28 @@ return {
             })
         end,
     },
+    -- {
+    --     "navarasu/onedark.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         require("onedark").setup {
+    --             style = "cool", -- options: dark, darker, cool, deep, warm, warmer, light
+    --             transparent = true
+    --         }
+    --         require("onedark").load()
+    --     end
+    -- },
     {
-        "navarasu/onedark.nvim",
+        "ellisonleao/gruvbox.nvim",
         priority = 1000,
         config = function()
-            require("onedark").setup {
-                style = "cool", -- options: dark, darker, cool, deep, warm, warmer, light
-                transparent = true
-            }
-            require("onedark").load()
-        end
+            require("gruvbox").setup({
+                contrast = "",         -- "hard" | "soft" | ""
+                transparent_mode = false,  -- false = show light background color
+            })
+            vim.o.background = "light"     -- must be set before loading the colorscheme
+            vim.cmd("colorscheme gruvbox")
+        end,
     },
     {
         'nvim-lualine/lualine.nvim',
@@ -67,11 +79,11 @@ return {
         lazy = true,
         cmd = "Silicon",
         config = function ()
-            local outputdir = "~/Pictures/screenShot/CodeShots/"
+            local outputdir = "~/Pictures/Screenshots/CodeShots/"
             require("silicon").setup({
                 font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
                 to_clipboard = true,
-                background = "#9ca8b3",
+                background = "#ECDDB4",
                 output = function ()
                     local stamp = os.date("%Y-%m-%d_%H-%M-%S")
                     local name = vim.fn.expand("%:t"):gsub("%.", "_")
@@ -100,5 +112,19 @@ return {
             })
             vim.notify = require("notify")    -- make it the default notification handler
         end,
+    },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+        lazy = false, -- neo-tree will lazily load itself
+        ---@module "neo-tree"
+        ---@type neotree.Config?
+        opts = {
+        },
     },
 }
