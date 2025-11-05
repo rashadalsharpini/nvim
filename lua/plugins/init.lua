@@ -80,4 +80,25 @@ return {
             })
         end
     },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require("notify").setup({
+                background_colour = "#1e222a",  -- matches OneDark (cool)
+                stages = "fade_in_slide_out",
+                timeout = 2000,
+            })
+            vim.notify = require("notify")    -- make it the default notification handler
+        end,
+    },
 }
