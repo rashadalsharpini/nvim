@@ -13,6 +13,11 @@ return {
 			cpp = { "clang-format" },
 			sh = { "shfmt" },
 		},
+		formatters = {
+			["clang-format"] = {
+				prepend_args = { "--style={BasedOnStyle: llvm, IndentWidth: 4}" },
+			},
+		},
 		format_on_save = {
 			timeout_ms = 500,
 			lsp_fallback = true,
