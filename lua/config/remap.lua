@@ -70,3 +70,5 @@ map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true }) -- Right
 map("n", "<leader>f", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file" })
+
+map("n", "<Esc>", ":nohlsearch<CR><Esc>")
