@@ -160,4 +160,12 @@ return {
 			},
 		},
 	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl", -- newer API name
+		opts = {
+			indent = { char = "│" }, -- or "▏" or "┊"
+			scope = { enabled = true },
+		},
+	},
 }
