@@ -30,6 +30,8 @@ def fast_power(a, b):
         a *= a % MOD
         b >>= 1
     return res
+
+
 # xor_val = [0]*int((3*pow(10,5)+1))
 # for p in range(1, int((3*pow(10,5)+1))):
 #     xor_val[p] = xor_val[p - 1] ^ p
@@ -42,7 +44,7 @@ def solve():
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # start = time()
     t = 1
     # t = int(input())
