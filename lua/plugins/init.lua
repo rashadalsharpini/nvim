@@ -88,7 +88,7 @@ return {
         lazy = true,
         cmd = "Silicon",
         config = function()
-            local outputdir = "~/Pictures/Screenshots/CodeShots/"
+            local outputdir = "~/Pictures/Screenshots/"
             require("silicon").setup({
                 font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
                 to_clipboard = true,
@@ -145,7 +145,6 @@ return {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
