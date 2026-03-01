@@ -60,11 +60,20 @@ map("v", "<leader>cs", ":Silicon<CR>", { desc = "Capture code screenshot", norem
 
 map("n", "<C-c>", "<cmd> %y+ <CR>")
 
--- Easy window navigation with Ctrl + h/j/k/l
-map("n", "<C-h>", "<C-w>h", { noremap = true, silent = true }) -- Left
-map("n", "<C-j>", "<C-w>j", { noremap = true, silent = true }) -- Down
-map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true }) -- Up
-map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true }) -- Right
+local function smart_wincmd(dir)
+  local initial_win = vim.fn.win_getid()
+  vim.cmd("wincmd " .. dir)
+  local attempts = 0
+  while vim.fn.win_getid() == initial_win and attempts < 5 do
+    vim.cmd("wincmd w")
+    attempts = attempts + 1
+  end
+end
+
+map("n", "<C-h>", function() smart_wincmd("h") end, { noremap = true, silent = true })
+map("n", "<C-j>", function() smart_wincmd("j") end, { noremap = true, silent = true })
+map("n", "<C-k>", function() smart_wincmd("k") end, { noremap = true, silent = true })
+map("n", "<C-l>", function() smart_wincmd("l") end, { noremap = true, silent = true })
 
 -- format
 map("n", "<leader>f", function()
