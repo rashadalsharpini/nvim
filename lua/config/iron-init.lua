@@ -44,7 +44,7 @@ iron.setup {
     -- For example,
     -- 
     -- repl_open_cmd = view.split.vertical.rightbelow("%40")
-    repl_open_cmd = "belowright 40 split"
+    repl_open_cmd = "belowright 20 split"
 
   },
   -- Iron doesn't set keymaps by default anymore.
