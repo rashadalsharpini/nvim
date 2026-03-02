@@ -12,11 +12,11 @@ map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- normal cursor move
 map({ "n", "v" }, "h", function()
-	return vim.fn.col(".") == 1 and "k$" or "h"
+    return vim.fn.col(".") == 1 and "k$" or "h"
 end, { expr = true })
 
 map({ "n", "v" }, "l", function()
-	return vim.fn.col(".") >= #vim.fn.getline(".") and "j0" or "l"
+    return vim.fn.col(".") >= #vim.fn.getline(".") and "j0" or "l"
 end, { expr = true })
 -- vim motions in insert mode
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
@@ -27,18 +27,18 @@ map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 -- Helper function for column-aware movement
 local function insert_move(key, fallback)
-	return function()
-		local col = vim.fn.col(".")
-		local line_length = #vim.fn.getline(".")
+    return function()
+        local col = vim.fn.col(".")
+        local line_length = #vim.fn.getline(".")
 
-		if key == "h" and col == 1 then
-			return "<Esc>k$i"
-		elseif key == "l" and col >= line_length then
-			return "<Esc>j0i"
-		else
-			return fallback
-		end
-	end
+        if key == "h" and col == 1 then
+            return "<Esc>k$i"
+        elseif key == "l" and col >= line_length then
+            return "<Esc>j0i"
+        else
+            return fallback
+        end
+    end
 end
 
 -- Insert mode mappings with Ctrl
@@ -61,13 +61,13 @@ map("v", "<leader>cs", ":Silicon<CR>", { desc = "Capture code screenshot", norem
 map("n", "<C-c>", "<cmd> %y+ <CR>")
 
 local function smart_wincmd(dir)
-  local initial_win = vim.fn.win_getid()
-  vim.cmd("wincmd " .. dir)
-  local attempts = 0
-  while vim.fn.win_getid() == initial_win and attempts < 5 do
-    vim.cmd("wincmd w")
-    attempts = attempts + 1
-  end
+    local initial_win = vim.fn.win_getid()
+    vim.cmd("wincmd " .. dir)
+    local attempts = 0
+    while vim.fn.win_getid() == initial_win and attempts < 5 do
+        vim.cmd("wincmd w")
+        attempts = attempts + 1
+    end
 end
 
 map("n", "<C-h>", function() smart_wincmd("h") end, { noremap = true, silent = true })
@@ -75,9 +75,21 @@ map("n", "<C-j>", function() smart_wincmd("j") end, { noremap = true, silent = t
 map("n", "<C-k>", function() smart_wincmd("k") end, { noremap = true, silent = true })
 map("n", "<C-l>", function() smart_wincmd("l") end, { noremap = true, silent = true })
 
+-- Jupytext: sync .py to .ipynb on save
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*.py",
+    callback = function(args)
+        local py_file = vim.fn.expand("%:p")
+        local ipynb_file = vim.fn.fnamemodify(py_file, ":r") .. ".ipynb"
+        vim.fn.jobstart({ "jupytext", "--to", "notebook", "--output", ipynb_file, py_file }, {
+            detach = true,
+        })
+    end,
+})
+
 -- format
 map("n", "<leader>f", function()
-	require("conform").format({ async = true, lsp_fallback = true })
+    require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file" })
 
 map("n", "<Esc>", ":nohlsearch<CR><Esc>")

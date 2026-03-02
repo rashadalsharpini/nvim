@@ -178,5 +178,10 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim"
+    },
+    {
+        "GCBallesteros/jupytext.nvim",
+        lazy = true,
+        cmd = { "Jupytext", "JupytextToNotebook" },
     }
 }
