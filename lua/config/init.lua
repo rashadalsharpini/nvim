@@ -9,8 +9,8 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-	callback = function()
-		vim.opt_local.foldmethod = "indent"
-		vim.opt_local.foldlevel = 99 -- unfold all folds
-	end,
+    callback = function()
+        vim.opt_local.foldmethod = "indent"
+        vim.opt_local.foldlevel = 99 -- unfold all folds
+    end,
 })

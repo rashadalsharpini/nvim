@@ -12,11 +12,11 @@ map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- normal cursor move
 map({ "n", "v" }, "h", function()
-	return vim.fn.col(".") == 1 and "k$" or "h"
+    return vim.fn.col(".") == 1 and "k$" or "h"
 end, { expr = true })
 
 map({ "n", "v" }, "l", function()
-	return vim.fn.col(".") >= #vim.fn.getline(".") and "j0" or "l"
+    return vim.fn.col(".") >= #vim.fn.getline(".") and "j0" or "l"
 end, { expr = true })
 -- vim motions in insert mode
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
@@ -27,18 +27,18 @@ map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 -- Helper function for column-aware movement
 local function insert_move(key, fallback)
-	return function()
-		local col = vim.fn.col(".")
-		local line_length = #vim.fn.getline(".")
+    return function()
+        local col = vim.fn.col(".")
+        local line_length = #vim.fn.getline(".")
 
-		if key == "h" and col == 1 then
-			return "<Esc>k$i"
-		elseif key == "l" and col >= line_length then
-			return "<Esc>j0i"
-		else
-			return fallback
-		end
-	end
+        if key == "h" and col == 1 then
+            return "<Esc>k$i"
+        elseif key == "l" and col >= line_length then
+            return "<Esc>j0i"
+        else
+            return fallback
+        end
+    end
 end
 
 -- Insert mode mappings with Ctrl
@@ -68,7 +68,7 @@ map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true }) -- Right
 
 -- format
 map("n", "<leader>f", function()
-	require("conform").format({ async = true, lsp_fallback = true })
+    require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file" })
 
 map("n", "<Esc>", ":nohlsearch<CR><Esc>")

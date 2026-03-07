@@ -42,29 +42,6 @@ return {
             })
         end,
     },
-    -- {
-    --     "navarasu/onedark.nvim",
-    --     priority = 1000,
-    --     config = function()
-    --         require("onedark").setup {
-    --             style = "cool", -- options: dark, darker, cool, deep, warm, warmer, light
-    --             transparent = true
-    --         }
-    --         require("onedark").load()
-    --     end
-    -- },
-    {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000,
-        config = function()
-            require("gruvbox").setup({
-                contrast = "",            -- "hard" | "soft" | ""
-                transparent_mode = false, -- false = show light background color
-            })
-            vim.o.background = "light"    -- must be set before loading the colorscheme
-            vim.cmd("colorscheme gruvbox")
-        end,
-    },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
